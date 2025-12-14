@@ -4,6 +4,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
@@ -14,6 +15,7 @@ import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "mail.enabled", havingValue = "true")
 public class MailService {
     //의존성 주입을 통해서 필요한 객체를 가져온다.
     @Autowired
