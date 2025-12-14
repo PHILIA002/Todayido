@@ -4,6 +4,7 @@ import com.metamong.todayido.service.MailService;
 import jakarta.mail.MessagingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @Controller
 @Slf4j
+@ConditionalOnProperty(name = "mail.enabled", havingValue = "true")
 public class MailController {
     @Autowired
     private MailService mServ;
